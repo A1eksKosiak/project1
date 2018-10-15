@@ -4,12 +4,12 @@ import java.util.Set;
 
 @Entity
 @Table(name = "students")
-public class Students {
+public class Student {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", updatable = false, nullable = false)
-    private Integer id;
+    private Long id;
 
     @Column(name = "first_name")
     private String firstName;
@@ -26,27 +26,27 @@ public class Students {
     @ManyToMany
     @JoinTable(
             name = "student_group",
-            joinColumns = {@JoinColumn(name = "id_student", nullable = false)},
-            inverseJoinColumns = {@JoinColumn(name = "id_group", nullable = false)}
+            joinColumns = {@JoinColumn(name = "student_id", nullable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "group_id", nullable = false)}
     )
-    private Set<Groups> groups;
+    private Set<Group> groups;
 
-    public Students() {
+    public Student() {
     }
 
-    public Set<Groups> getGroups() {
+    public Set<Group> getGroups() {
         return groups;
     }
 
-    public void setGroups(Set<Groups> groups) {
+    public void setGroups(Set<Group> groups) {
         this.groups = groups;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

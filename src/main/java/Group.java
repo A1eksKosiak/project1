@@ -1,24 +1,34 @@
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
-@Table (name ="groups")
-public class Groups {
-@Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+@Table(name = "groups")
+public class Group {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
-@Column (name="schedule_id")
+
+    @Column(name = "schedule_id")
     private Integer scheduleId;
-@Column (name="room_id")
+
+    @Column(name = "room_id")
     private Integer roomId;
-@Column (name="date_start")
+
+    @Column(name = "date_start")
     private Date dateStart;
-@Column (name="date_finish")
+
+    @Column(name = "date_finish")
     private Date dateFinish;
-@Column (name="course_id")
+
+    @Column(name = "course_id")
     private Integer courseId;
 
-    public Groups() {
+    @ManyToMany(mappedBy = "groups")
+    private Set<Student> students;
+
+    public Group() {
     }
 
     public Long getId() {

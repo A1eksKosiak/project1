@@ -1,41 +1,42 @@
 import javax.persistence.*;
 
 @Entity
-@Table (name="room")
+@Table(name = "room")
 public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @Column(name = "adress_id")
-    private int adressId;
+    private Long addressId;
+
     @Column(name = "max_size")
-    private int maxSize;
+    private Long maxSize;
 
     public Room() {
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public int getAdressId() {
-        return adressId;
+    public Long getAddressId() {
+        return addressId;
     }
 
-    public void setAdressId(int adressId) {
-        this.adressId = adressId;
+    public void setAddressId(Long addressId) {
+        this.addressId = addressId;
     }
 
-    public int getMaxSize() {
+    public Long getMaxSize() {
         return maxSize;
     }
 
-    public void setMaxSize(int maxSize) {
+    public void setMaxSize(Long maxSize) {
         this.maxSize = maxSize;
     }
 }

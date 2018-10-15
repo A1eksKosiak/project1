@@ -1,16 +1,19 @@
 import javax.persistence.*;
 
 @Entity
-@Table(name="address")
+@Table(name = "address")
 public class Address {
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
-    @Column (name="city")
+
+    @Column(name = "city")
     private String city;
-    @Column(name="street")
+
+    @Column(name = "street")
     private String street;
-    @Column (name="number")
+
+    @Column(name = "number")
     private Integer number;
 
     public Address() {
