@@ -5,38 +5,36 @@ import javax.persistence.*;
 public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @Column(name = "adress_id")
-    private Long addressId;
+    private Integer addressId;
 
     @Column(name = "max_size")
-    private Long maxSize;
+    private Integer maxSize;
 
     public Room() {
     }
 
-    public Long getId() {
-        return id;
-    }
+    public Integer getId() { return id; }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public Long getAddressId() {
+    public Integer getAddressId() {
         return addressId;
     }
 
-    public void setAddressId(Long addressId) {
+    public void setAddressId(Integer addressId) {
         this.addressId = addressId;
     }
 
-    public Long getMaxSize() {
+    public Integer getMaxSize() {
         return maxSize;
     }
 
-    public void setMaxSize(Long maxSize) {
+    public void setMaxSize(Integer maxSize) {
         this.maxSize = maxSize;
     }
 }

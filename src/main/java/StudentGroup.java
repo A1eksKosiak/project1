@@ -3,12 +3,13 @@ import java.util.Date;
 import java.util.Set;
 
 @Entity
-@Table(name = "groups")
-public class Group {
+@Table(name = "student_group")
+public class StudentGroup {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    @Column(name = "id", updatable = false, nullable = false)
+    private Integer id;
 
     @Column(name = "schedule_id")
     private Integer scheduleId;
@@ -25,18 +26,18 @@ public class Group {
     @Column(name = "course_id")
     private Integer courseId;
 
-    @ManyToMany(mappedBy = "groups")
+    @ManyToMany(mappedBy = "studentGroups")
     private Set<Student> students;
 
-    public Group() {
+    public StudentGroup() {
     }
 
-    public Long getId() {
-        return Id;
+    public Integer getId() {
+        return id;
     }
 
-    public void setId(Long id) {
-        Id = id;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Integer getScheduleId() {
@@ -79,5 +80,12 @@ public class Group {
         this.courseId = courseId;
     }
 
+    public Set<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(Set<Student> students) {
+        this.students = students;
+    }
 }
 

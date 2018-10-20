@@ -1,52 +1,52 @@
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Set;
 
 @Entity
-@Table(name = "students")
+@Table(name = "student")
 public class Student {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", updatable = false, nullable = false)
-    private Long id;
+    private Integer id;
 
-    @Column(name = "first_name")
+    @Column(name = "first_name", length = 50, nullable = false)
     private String firstName;
 
-    @Column(name = "last_name")
+    @Column(name = "last_name", length = 100, nullable = false)
     private String lastName;
 
-    @Column(name = "date_of_birth")
-    private Date dateOfBirth;
+    @Column(name = "date_of_birth", nullable = false)
+    private LocalDate dateOfBirth;
 
-    @Column(name = "nationality")
+    @Column(name = "nationality", length = 50, nullable = false)
     private String nationality;
 
     @ManyToMany
     @JoinTable(
-            name = "student_group",
-            joinColumns = {@JoinColumn(name = "student_id", nullable = false)},
-            inverseJoinColumns = {@JoinColumn(name = "group_id", nullable = false)}
+            name = "student_to_group_mapping",
+            joinColumns = {@JoinColumn(name = "student_id", referencedColumnName = "id", nullable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "student_group_id", referencedColumnName = "id", nullable = false)}
     )
-    private Set<Group> groups;
+    private Set<StudentGroup> studentGroups;
 
     public Student() {
     }
 
-    public Set<Group> getGroups() {
-        return groups;
+    public Set<StudentGroup> getStudentGroups() {
+        return studentGroups;
     }
 
-    public void setGroups(Set<Group> groups) {
-        this.groups = groups;
+    public void setStudentGroups(Set<StudentGroup> studentGroups) {
+        this.studentGroups = studentGroups;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -66,11 +66,11 @@ public class Student {
         this.lastName = lastName;
     }
 
-    public Date getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
